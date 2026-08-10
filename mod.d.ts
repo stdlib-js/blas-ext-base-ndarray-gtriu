@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,23 +16,35 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Copy the upper triangular part of a matrix `A` to another matrix `B`.
+* Copies the upper triangular part of a matrix `A` to another matrix `B`.
 *
-* @module @stdlib/blas-ext-base-ndarray-gtriu
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a two-dimensional input ndarray corresponding to `A`.
+*     -   a two-dimensional output ndarray corresponding to `B`.
+*     -   a zero-dimensional ndarray specifying the diagonal below which to ignore.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var matrix = require( '@stdlib/ndarray-matrix-ctor' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var gtriu = require( '@stdlib/blas-ext-base-ndarray-gtriu' );
 *
 * var A = matrix( [ [ 1.0, 2.0 ], [ 3.0, 4.0 ] ], 'generic' );
 * var B = matrix( [ [ 0.0, 0.0 ], [ 0.0, 0.0 ] ], 'generic' );
 *
 * var k = scalar2ndarray( 0, {
-*    'dtype': 'generic'
+*     'dtype': 'generic'
 * });
 *
 * var out = gtriu( [ A, B, k ] );
@@ -41,12 +53,9 @@
 * var bool = ( out === B );
 * // returns true
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function gtriu<T extends typedndarray<unknown> = typedndarray<unknown>>( arrays: [ typedndarray<unknown>, T, typedndarray<number> ] ): T;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = gtriu;
